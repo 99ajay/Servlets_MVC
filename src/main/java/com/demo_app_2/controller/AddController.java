@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.demo_app_2.model.Addnumber;
+import com.demo_app_2.model.Calculator;
 
 @WebServlet("/add")
 public class AddController extends HttpServlet {
@@ -22,6 +22,9 @@ public class AddController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher rd = request.getRequestDispatcher("add_numbers.jsp");
+		rd.forward(request, response);
  	}
 
 
@@ -32,7 +35,7 @@ public class AddController extends HttpServlet {
 		int x = Integer.parseInt(num1);
 		int y = Integer.parseInt(num2);
 		
-		Addnumber a = new Addnumber();//create a object of the model.
+		Calculator a = new Calculator();//create a object of the model.
 		int result = a.addNumber(x, y);
 		
 		//How to send to browser-- jsp page 
