@@ -29,6 +29,7 @@ public class AddController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		String num1 = request.getParameter("num1");//request.getParameter only reads the String Value,I need to convert to the Integer
 		String num2 = request.getParameter("num2");
 		
@@ -48,7 +49,14 @@ public class AddController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("add_numbers.jsp");//linked rd page to the view"add_numbers.jsp page"
 		rd.forward(request, response);//automatically "request and response object " forward to the view page 
 		
-		
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			request.setAttribute("error", "Invalid Input.....");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("add_numbers.jsp");
+			rd.forward(request, response);
+		}
 		
 		
 		

@@ -25,7 +25,8 @@ public class DeleteController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     String num1= request.getParameter("num1");
+     try {
+	 String num1= request.getParameter("num1");
      String num2= request.getParameter("num2");
      
      int x = Integer.parseInt(num1);
@@ -36,6 +37,12 @@ public class DeleteController extends HttpServlet {
      
      RequestDispatcher rd = request.getRequestDispatcher("delete_numbers.jsp");
      rd.forward(request, response);
+     }catch(Exception e){
+     e.printStackTrace();
+     request.setAttribute("error", "Invalid input for the delete number");
+     RequestDispatcher rd = request.getRequestDispatcher("delete_numbers.jsp");
+     rd.forward(request, response); 
+     }
      
 	}
 

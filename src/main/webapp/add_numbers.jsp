@@ -20,5 +20,10 @@ if(request.getAttribute("res")!=null){
 out.println(request.getAttribute("res"));// control goes to the controller and it will return Output value
 }
 %>
+<%
+if(request.getAttribute("error")!=null){
+out.println(request.getAttribute("error"));// control goes to the controller and it will return Output value
+}
+%>
 </body>
 </html> 
